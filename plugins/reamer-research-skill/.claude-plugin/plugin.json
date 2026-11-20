@@ -8,8 +8,18 @@
     "email": "support@reamerlabs.com",
     "url": "https://reamerlabs.com"
   },
-  "homepage": "https://reamerlabs.com/docs/research-mcp",
+  "homepage": "https://reamerlabs.com/products/reamer-research",
+  "documentationUrl": "https://reamerlabs.com/docs/research-mcp",
+  "supportUrl": "https://github.com/reamerlabs/reamer-research-mcp/issues",
+  "privacyPolicyUrl": "https://reamerlabs.com/privacy",
+  "termsOfServiceUrl": "https://reamerlabs.com/terms",
   "repository": "https://github.com/reamerlabs/reamer-research-mcp",
   "license": "MIT",
-  "keywords": ["backtesting", "algorithmic-trading", "trading", "quant", "monte-carlo"]
+  "keywords": [
+    "backtesting",
+    "algorithmic-trading",
+    "trading",
+    "quant",
+    "monte-carlo"
+  ]
 }
