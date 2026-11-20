@@ -1,0 +1,17 @@
+{
+  "name": "reamerlabs",
+  "owner": {
+    "name": "Reamer Labs",
+    "email": "support@reamerlabs.com"
+  },
+  "metadata": {
+    "description": "Claude Code plugins from Reamer Labs."
+  },
+  "plugins": [
+    {
+      "name": "reamer-research",
+      "source": "./",
+      "description": "Backtest trading strategies with Reamer Research: run them on your bars, read every trade, run Monte Carlo and open visual trade diagnostics."
+    }
+  ]
+}

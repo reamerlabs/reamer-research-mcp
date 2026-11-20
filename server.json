@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.reamerlabs/reamer-research-mcp",
+  "title": "Reamer Research",
+  "description": "Run backtests, Monte Carlo and visual trade diagnostics with the Reamer Research trading engine.",
+  "websiteUrl": "https://reamerlabs.com/products/reamer-research",
+  "repository": {
+    "url": "https://github.com/reamerlabs/reamer-research-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "reamer-research-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "REAMER_PYTHON",
+          "description": "Path of a Python that has the reamer_research wheel installed, if it is not this server's Python or python3 on PATH.",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
+}

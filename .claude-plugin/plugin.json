@@ -1,0 +1,21 @@
+{
+  "name": "reamer-research",
+  "displayName": "Reamer Research",
+  "version": "0.1.0",
+  "description": "Backtest trading strategies with Reamer Research from Claude Code: write a strategy, run it on your bars, read every trade, run Monte Carlo and open visual trade diagnostics.",
+  "author": {
+    "name": "Reamer Labs",
+    "email": "support@reamerlabs.com",
+    "url": "https://reamerlabs.com"
+  },
+  "homepage": "https://reamerlabs.com/products/reamer-research",
+  "repository": "https://github.com/reamerlabs/reamer-research-mcp",
+  "license": "MIT",
+  "keywords": ["backtesting", "algorithmic-trading", "trading", "quant", "monte-carlo", "mcp"],
+  "mcpServers": {
+    "reamer-research": {
+      "command": "uvx",
+      "args": ["reamer-research-mcp"]
+    }
+  }
+}
