@@ -104,7 +104,7 @@ month and removes every limit; the same strategy files run unchanged.
 - [Reamer Research](https://reamerlabs.com/products/reamer-research)
 - [Documentation](https://reamerlabs.com/docs)
 - [Release page and downloads](https://github.com/reamerlabs/reamer-research)
-- [Examples](https://github.com/j0osman/reamer-research-examples)
+- [Examples](https://github.com/reamerlabs/reamer-research-examples)
 
 ## Licence
 

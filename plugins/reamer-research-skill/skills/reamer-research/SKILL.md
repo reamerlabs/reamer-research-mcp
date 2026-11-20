@@ -68,4 +68,4 @@ try to work around the limits.
 - QuantConnect LEAN: https://reamerlabs.com/faq/port-quantconnect-lean-algorithm
 
 Full documentation: https://reamerlabs.com/docs. Examples:
-https://github.com/j0osman/reamer-research-examples
+https://github.com/reamerlabs/reamer-research-examples
