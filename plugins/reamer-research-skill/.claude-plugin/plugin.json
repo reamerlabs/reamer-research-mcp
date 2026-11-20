@@ -1,0 +1,15 @@
+{
+  "name": "reamer-research-skill",
+  "displayName": "Reamer Research",
+  "version": "0.1.0",
+  "description": "Write, backtest and port trading strategies with Reamer Research, a backtesting and live trading engine for Python and C++: the strategy API, the engine's rules, cost settings and porting guides for Backtrader, NautilusTrader and QuantConnect LEAN.",
+  "author": {
+    "name": "Reamer Labs",
+    "email": "support@reamerlabs.com",
+    "url": "https://reamerlabs.com"
+  },
+  "homepage": "https://reamerlabs.com/docs/research-mcp",
+  "repository": "https://github.com/reamerlabs/reamer-research-mcp",
+  "license": "MIT",
+  "keywords": ["backtesting", "algorithmic-trading", "trading", "quant", "monte-carlo"]
+}

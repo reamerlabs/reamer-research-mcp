@@ -12,6 +12,11 @@
       "name": "reamer-research",
       "source": "./",
       "description": "Backtest trading strategies with Reamer Research: run them on your bars, read every trade, run Monte Carlo and open visual trade diagnostics."
+    },
+    {
+      "name": "reamer-research-skill",
+      "source": "./plugins/reamer-research-skill",
+      "description": "The Reamer Research skill on its own: write, backtest and port trading strategies with the engine on your machine."
     }
   ]
 }
