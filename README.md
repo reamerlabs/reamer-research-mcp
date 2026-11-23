@@ -112,4 +112,4 @@ This server, the plugin and the skill are under the MIT licence. The engine
 is commercial software under the Reamer Labs Software License Agreement,
 downloaded separately from [reamerlabs.com/download](https://reamerlabs.com/download).
 
-Support: support@reamerlabs.com
+Support: open an issue at [github.com/reamerlabs/reamer-research/issues](https://github.com/reamerlabs/reamer-research/issues), or email support@reamerlabs.com (best effort).
