@@ -14,9 +14,9 @@ byte.
 ## Workflow
 
 1. Check the engine: run `python3 -c "import reamer_research"` with the
-   Python the user works in. If it is missing, point the user to the
-   free kit at https://reamerlabs.com/download and its install steps in
-   [reference.md](reference.md). Stop there.
+   Python the user works in. If it is missing, install it with
+   `pip install reamer-research` (Linux x86-64, macOS on Apple silicon,
+   Windows through WSL2; Python 3.9+). No key or sign-up is needed.
 2. Read [reference.md](reference.md) before writing code.
 3. Write the strategy to a `.py` file in the user's project: an `on_bar(data)`
    function, a class with `on_bar(self, data)` and a `lookback` attribute, or

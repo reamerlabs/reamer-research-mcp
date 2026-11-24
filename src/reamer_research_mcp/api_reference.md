@@ -118,7 +118,8 @@ MetaTrader exports work as saved. Separate date and time columns, date
 strings (read as UTC) and epoch seconds, milliseconds, microseconds or
 nanoseconds all work. Bars may be of any type: time, tick, volume, dollar or
 your own rule. Synthetic sample bars:
-https://raw.githubusercontent.com/reamerlabs/reamer-research-examples/main/python/sample_data/AAPL.csv In Python, `rr.load_csv`, `rr.to_bars(df)`, `rr.write_bin` and
+https://raw.githubusercontent.com/reamerlabs/reamer-research-examples/main/python/sample_data/AAPL.csv
+In Python, `rr.load_csv`, `rr.to_bars(df)`, `rr.write_bin` and
 `rr.read_bin` convert data. The full kit (https://reamerlabs.com/download)
 adds `python/fetchers/` for Alpaca and Databento bars.
 
