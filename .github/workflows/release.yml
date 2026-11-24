@@ -1,0 +1,63 @@
+# Pushing a tag vX.Y.Z publishes reamer-research-mcp X.Y.Z to PyPI, then
+# server.json to the official MCP Registry. No tokens are stored: PyPI trusts
+# this workflow through trusted publishing (publisher set on the
+# reamer-research-mcp project on pypi.org), and the registry through GitHub
+# OIDC for the reamerlabs namespace.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the tag matches every version field
+        run: |
+          set -e
+          V="${GITHUB_REF_NAME#v}"
+          grep -q "^version = \"$V\"" pyproject.toml
+          grep -q "__version__ = '$V'" src/reamer_research_mcp/__init__.py || grep -q "__version__ = \"$V\"" src/reamer_research_mcp/__init__.py
+          python -c "import json,sys; d=json.load(open('server.json')); assert d['version']==sys.argv[1] and all(p['version']==sys.argv[1] for p in d['packages']), 'server.json'" "$V"
+          python -c "import json,sys; assert json.load(open('.claude-plugin/plugin.json'))['version']==sys.argv[1], 'plugin.json'" "$V"
+      - name: Build
+        run: |
+          pip install build twine
+          python -m build
+          twine check --strict dist/*
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
+
+  registry:
+    needs: [pypi]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher
+        run: |
+          curl -sL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+      - name: Wait until PyPI serves this version
+        run: |
+          V="${GITHUB_REF_NAME#v}"
+          for i in $(seq 30); do
+            curl -sf "https://pypi.org/pypi/reamer-research-mcp/$V/json" >/dev/null && exit 0
+            sleep 10
+          done
+          echo "PyPI does not list $V yet"; exit 1
+      - name: Log in with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+      - name: Publish
+        run: ./mcp-publisher publish

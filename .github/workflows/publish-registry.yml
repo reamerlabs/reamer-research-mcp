@@ -1,5 +1,5 @@
-# Publishes server.json to the official MCP Registry. Run by hand from the
-# Actions tab after a new version is on PyPI; nothing triggers it otherwise.
+# Publishes server.json to the official MCP Registry by hand, for a re-run;
+# release.yml does it on every version tag after the PyPI upload.
 name: Publish to MCP Registry
 
 on:
