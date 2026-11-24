@@ -26,8 +26,9 @@ the on_bar data fields, the order functions and every setting. Costs default to
 zero, so pass the user's commission and spread in settings. Without a licence
 the engine runs in Evaluation Mode (one ticker, at most 30 days or 50,000 bars
 per backtest); a run past it returns an EvaluationLimit error naming the limit.
-If engine_status reports the engine missing, tell the user to download the free
-kit from {engine.DOWNLOAD} and pip install its wheel.
+The engine installs with this server from PyPI (reamer-research). If
+engine_status reports it missing, pass on its error: it names the supported
+platforms and the REAMER_PYTHON setting.
 """
 
 server = _Server(name='reamer-research', instructions=INSTRUCTIONS)
@@ -89,7 +90,7 @@ def engine_status() -> dict:
     Mode limits and where runs are stored, or install instructions."""
     info, err = engine.find_engine(refresh=True)
     if err:
-        return {'installed': False, 'error': err, 'download': engine.DOWNLOAD}
+        return {'installed': False, 'error': err, 'engine_package': engine.PYPI}
     return {'installed': True, 'engine_version': info['version'], 'python': info['python'],
             'defaults': info['defaults'], 'server_version': __version__,
             'runs_dir': str(engine.runs_root()),

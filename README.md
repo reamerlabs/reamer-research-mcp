@@ -31,16 +31,10 @@ each with the full JSON report and the trade diagnostics page.
 
 ## Install
 
-**1. The engine.** Download the Reamer Research kit (free, no key, Linux
-x86-64, macOS on Apple silicon, Windows through WSL2) from
-[reamerlabs.com/download](https://reamerlabs.com/download), then:
-
-```bash
-tar xzf research-kit-*.tar.gz
-pip install research-kit-*/python/reamer_research-*.whl
-```
-
-**2. The server**, in one of these ways.
+The server installs the engine,
+[`reamer-research` from PyPI](https://pypi.org/project/reamer-research/), with
+itself: no download, key or sign-up. Linux x86-64, macOS on Apple silicon,
+Windows through WSL2. Add it in one of these ways.
 
 Claude Code plugin, which also adds a Reamer Research skill (needs
 [uv](https://docs.astral.sh/uv/)):
@@ -72,9 +66,9 @@ Claude Desktop, Cursor and other clients, in the client's MCP config:
 Without uv, `pip install reamer-research-mcp` and use `reamer-research-mcp`
 as the command.
 
-The server finds the engine in `REAMER_PYTHON` if set, else in its own
-Python, else in `python3` on `PATH`. If you installed the wheel into a
-virtual environment, point `REAMER_PYTHON` at it:
+To use an engine you installed elsewhere instead (a virtual environment with
+`pip install reamer-research`, or the kit's wheel), point `REAMER_PYTHON` at
+that environment's Python:
 
 ```json
 "env": { "REAMER_PYTHON": "/home/you/venv/bin/python" }
@@ -86,10 +80,10 @@ The server needs Python 3.10 or later. The engine runs on Python 3.9 or later.
 
 Ask your assistant:
 
-> Write an ATR band reversion strategy for Reamer Research, backtest it on
-> research-kit-4.11.3-linux_x86_64/python/sample_data/SAMPLE_5min.csv with a
-> 0.005 commission and a 0.01 spread, show me the five worst trades and run
-> Monte Carlo.
+> Download https://raw.githubusercontent.com/reamerlabs/reamer-research-examples/main/python/sample_data/AAPL.csv,
+> write an ATR band reversion strategy for Reamer Research, backtest it on
+> that file with a 0.005 commission and a 0.01 spread, show me the five worst
+> trades and run Monte Carlo.
 
 ## Evaluation Mode
 
@@ -97,19 +91,22 @@ Without a licence, each backtest runs on one ticker over at most 30 days or
 50,000 bars, whichever comes first, and live trading is off. A run past a
 limit returns an error that names the limit. A
 [Reamer Research licence](https://reamerlabs.com/pricing) is $20 per seat per
-month and removes every limit; the same strategy files run unchanged.
+month and removes every limit; activate it once per machine with
+`bin/reamer-license` from the [full kit](https://reamerlabs.com/download), and
+the same strategy files run unchanged.
 
 ## Links
 
 - [Reamer Research](https://reamerlabs.com/products/reamer-research)
 - [Documentation](https://reamerlabs.com/docs)
-- [Release page and downloads](https://github.com/reamerlabs/reamer-research)
+- [The engine on PyPI](https://pypi.org/project/reamer-research/)
+- [Release page and the full kit](https://github.com/reamerlabs/reamer-research)
 - [Examples](https://github.com/reamerlabs/reamer-research-examples)
 
 ## Licence
 
 This server, the plugin and the skill are under the MIT licence. The engine
 is commercial software under the Reamer Labs Software License Agreement,
-downloaded separately from [reamerlabs.com/download](https://reamerlabs.com/download).
+installed from [PyPI](https://pypi.org/project/reamer-research/) as a dependency.
 
 Support: open an issue at [github.com/reamerlabs/reamer-research/issues](https://github.com/reamerlabs/reamer-research/issues), or email support@reamerlabs.com (best effort).

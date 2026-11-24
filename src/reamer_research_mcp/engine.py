@@ -1,12 +1,12 @@
 """Finds the Reamer Research engine and runs backtests through it.
 
-The engine is a wheel from the Reamer Research kit (reamerlabs.com/download),
-installed into some Python environment. This server may run in another one
-(uvx gives it its own), so the engine's interpreter is found separately:
+The engine is the reamer-research package from PyPI, a dependency of this
+server, so `uvx reamer-research-mcp` installs both into one environment. Its
+interpreter is found in this order:
 
 1. REAMER_PYTHON, if set: the path of a Python that has reamer_research.
-2. The interpreter running this server, if reamer_research imports there.
-3. python3, then python, on PATH.
+2. The interpreter running this server, where the dependency installs it.
+3. python3, then python, on PATH (platforms PyPI has no engine wheel for).
 
 Every backtest runs in a child process of that interpreter, so a strategy's
 prints, a crash or an endless loop never reach the MCP connection.
@@ -21,7 +21,7 @@ import uuid
 from pathlib import Path
 
 RUNNER = Path(__file__).with_name('_runner.py')
-DOWNLOAD = 'https://reamerlabs.com/download'
+PYPI = 'https://pypi.org/project/reamer-research/'
 PROBE = ('import json, sys, reamer_research as rr; '
          'print(json.dumps({"version": getattr(rr, "__version__", ""), '
          '"abi": getattr(rr, "REAMER_ABI_VERSION", None), "python": sys.executable, '
@@ -29,10 +29,10 @@ PROBE = ('import json, sys, reamer_research as rr; '
 
 NOT_FOUND = (
     'Reamer Research is not installed in any Python this server can find. '
-    f'Download the kit (free, no key) from {DOWNLOAD}, then install its wheel: '
-    'pip install research-kit-*/python/reamer_research-*.whl. '
-    'If it is installed in a virtual environment, set REAMER_PYTHON to that '
-    "environment's python (for example ~/venv/bin/python) in this MCP server's config."
+    'It installs with this server on Linux x86_64 and macOS on Apple Silicon '
+    '(Windows through WSL2); elsewhere it is not available. To use an existing install, '
+    'run pip install reamer-research in that environment and set REAMER_PYTHON to its '
+    "python (for example ~/venv/bin/python) in this MCP server's config."
 )
 
 

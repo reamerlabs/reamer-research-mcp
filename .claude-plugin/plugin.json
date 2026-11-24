@@ -1,7 +1,7 @@
 {
   "name": "reamer-research",
   "displayName": "Reamer Research",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Backtest trading strategies with Reamer Research from Claude Code: write a strategy, run it on your bars, read every trade, run Monte Carlo and open visual trade diagnostics.",
   "author": {
     "name": "Reamer Labs",

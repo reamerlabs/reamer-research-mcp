@@ -106,7 +106,8 @@ Keyword arguments of `rr.backtest`, passed to the MCP `backtest` tool as
 
 `lookback`, `start` and `end` (epoch seconds UTC, inclusive) and
 `ticker_config` (`{ticker: {setting: value}}`) are separate arguments.
-`EXECUTION_SPEC.md` in the kit defines every setting exactly.
+The execution specification, https://reamerlabs.com/docs/execution-spec,
+defines every setting exactly.
 
 ## data_files
 
@@ -116,10 +117,10 @@ CSV headers are matched loosely (`Date`, `<CLOSE>`, `Timestamp`), so
 MetaTrader exports work as saved. Separate date and time columns, date
 strings (read as UTC) and epoch seconds, milliseconds, microseconds or
 nanoseconds all work. Bars may be of any type: time, tick, volume, dollar or
-your own rule. The kit's `python/sample_data/SAMPLE_5min.csv` holds synthetic
-bars. In Python, `rr.load_csv`, `rr.to_bars(df)`, `rr.write_bin` and
-`rr.read_bin` convert data, and the kit's `python/fetchers/` downloads Alpaca
-and Databento bars.
+your own rule. Synthetic sample bars:
+https://raw.githubusercontent.com/reamerlabs/reamer-research-examples/main/python/sample_data/AAPL.csv In Python, `rr.load_csv`, `rr.to_bars(df)`, `rr.write_bin` and
+`rr.read_bin` convert data. The full kit (https://reamerlabs.com/download)
+adds `python/fetchers/` for Alpaca and Databento bars.
 
 ## results
 
@@ -149,7 +150,8 @@ first. Monte Carlo and visual trade diagnostics work; live trading needs a
 licence. A run past a limit stops with `rr.EvaluationLimit`, which names the
 limit; nothing is truncated. A licence ($20 per seat per month,
 https://reamerlabs.com/pricing) removes every limit and the same code runs
-unchanged. Download: https://reamerlabs.com/download
+unchanged. Activate it once per machine with `bin/reamer-license activate`
+from the kit at https://reamerlabs.com/download.
 
 ## live
 
@@ -159,11 +161,11 @@ https://reamerlabs.com/docs/research-live
 
 ## install
 
-1. Download the kit (free, no key): https://reamerlabs.com/download
-2. `tar xzf research-kit-*.tar.gz`
-3. `pip install research-kit-*/python/reamer_research-*.whl` (Python 3.9+)
-4. `python3 research-kit-*/python/examples/quickstart.py`
-
-Linux x86-64, macOS on Apple silicon, Windows through WSL2. If the engine is in
-a virtual environment the MCP server does not run in, set `REAMER_PYTHON` to
-that environment's `python` in the server's config.
+The MCP server installs the engine with itself (`uvx reamer-research-mcp`).
+Without the server: `pip install reamer-research` (Python 3.9+), or
+`pip install "reamer-research[pandas]"` for DataFrames. Linux x86-64, macOS on
+Apple silicon, Windows through WSL2. No key or sign-up: it runs in Evaluation
+Mode. To use an engine in another environment, set `REAMER_PYTHON` to that
+environment's `python` in the server's config. The full kit
+(https://reamerlabs.com/download) adds the C++ wrapper, the C ABI, data
+fetchers, the paper broker and relay receiver, and `reamer-license`.

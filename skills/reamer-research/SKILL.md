@@ -13,10 +13,10 @@ byte.
 
 ## Workflow
 
-1. Call `engine_status` (reamer-research MCP server). If the engine is
-   missing, tell the user to download the free kit from
-   https://reamerlabs.com/download and run
-   `pip install research-kit-*/python/reamer_research-*.whl`. Stop there.
+1. Call `engine_status` (reamer-research MCP server); the server installs the
+   engine with itself. If it reports the engine missing, pass on its error.
+   Without the server, `pip install reamer-research`. Stop there if neither
+   works.
 2. Read `api_reference` (or [reference.md](reference.md)) before writing code.
 3. Write the strategy to a `.py` file in the user's project: an `on_bar(data)`
    function, a class with `on_bar(self, data)` and a `lookback` attribute, or

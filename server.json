@@ -8,19 +8,19 @@
     "url": "https://github.com/reamerlabs/reamer-research-mcp",
     "source": "github"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "reamer-research-mcp",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
           "name": "REAMER_PYTHON",
-          "description": "Path of a Python that has the reamer_research wheel installed, if it is not this server's Python or python3 on PATH.",
+          "description": "Path of a Python with reamer-research installed, to use it instead of the engine this server installs (for example one with a source build).",
           "isRequired": false
         }
       ]
